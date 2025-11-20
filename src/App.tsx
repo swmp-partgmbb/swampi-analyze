@@ -97,7 +97,7 @@ function App() {
         // Load all 7 CSV files simultaneously
         const months = ['may', 'june', 'july', 'august', 'september', 'october', 'november'];
         const responses = await Promise.all(
-          months.map(month => fetch(`/${month}.csv`))
+          months.map(month => fetch(`${import.meta.env.BASE_URL}${month}.csv`))
         );
 
         const csvContents = await Promise.all(
@@ -127,7 +127,7 @@ function App() {
         ];
 
         const visitsResponses = await Promise.all(
-          visitsFiles.map(visitFile => fetch(`/${visitFile.file}`, {
+          visitsFiles.map(visitFile => fetch(`${import.meta.env.BASE_URL}${visitFile.file}`, {
             headers: {
               'Accept': 'text/csv;charset=UTF-8',
               'Content-Type': 'text/csv;charset=UTF-8'
@@ -383,7 +383,7 @@ function App() {
           <header className="text-center space-y-4 animate-fade-in">
             <div className="flex items-center justify-center mb-4">
               <img
-                src="/logo.svg"
+                src={`${import.meta.env.BASE_URL}logo.svg`}
                 alt="SWAMPI Logo"
                 className="w-24 h-24 mr-4 opacity-90"
               />
