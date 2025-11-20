@@ -13,7 +13,7 @@ interface UserVisitsSelectorProps {
 
 const UserVisitsSelector: React.FC<UserVisitsSelectorProps> = ({
   visitsData,
-  selectedPeriod,
+  selectedPeriod: _selectedPeriod,
   comparisonPeriods,
   onPeriodClick,
   onComparisonToggle,

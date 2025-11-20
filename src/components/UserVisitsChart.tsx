@@ -181,7 +181,7 @@ const UserVisitsChart: React.FC<UserVisitsChartProps> = ({ data, viewMode = 'ove
     const userComparisonData = Array.from(allUsers.values())
       .map(userInfo => {
         const userData: any = { user: userInfo.name.split(',')[0].trim().split(' ')[0] }; // Short name (first part before comma, then first name)
-        data.forEach((period, index) => {
+        data.forEach((period, _index) => {
           const user = period.topUsers.find(u => u.email === userInfo.email);
           const periodKey = period.periodName.replace(/\s+/g, '-').toLowerCase();
           userData[periodKey] = user ? user.visitCount : 0;

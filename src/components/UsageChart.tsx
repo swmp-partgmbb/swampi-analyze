@@ -211,12 +211,12 @@ const UsageChart: React.FC<UsageChartProps> = ({ data, viewMode = 'overview' }) 
 
       {/* Trend indicator */}
       <div className="mt-4 text-center">
-        <div className={`text-lg font-bold ${sortedData[sortedData.length - 1]?.averageDailyUsage > sortedData[0]?.averageDailyUsage ? 'text-green-400' : 'text-red-400'}`}>
+        <div className={`text-lg font-bold ${sortedData[sortedData.length - 1] && sortedData[0] && sortedData[sortedData.length - 1]!.averageDailyUsage > sortedData[0]!.averageDailyUsage ? 'text-green-400' : 'text-red-400'}`}>
           {sortedData[sortedData.length - 1] && sortedData[0] ? (
             <>
-              {sortedData[sortedData.length - 1].averageDailyUsage > sortedData[0].averageDailyUsage ? '↗' : '↘'}
+              {sortedData[sortedData.length - 1]!.averageDailyUsage > sortedData[0]!.averageDailyUsage ? '↗' : '↘'}
               {' '}
-              {Math.abs(((sortedData[sortedData.length - 1].averageDailyUsage - sortedData[0].averageDailyUsage) / sortedData[0].averageDailyUsage * 100)).toFixed(1)}%
+              {Math.abs(((sortedData[sortedData.length - 1]!.averageDailyUsage - sortedData[0]!.averageDailyUsage) / sortedData[0]!.averageDailyUsage * 100)).toFixed(1)}%
               Wachstum (Mai → November)
             </>
           ) : 'Keine Daten verfügbar'}

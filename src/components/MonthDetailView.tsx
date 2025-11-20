@@ -12,7 +12,7 @@ interface MonthDetailViewProps {
 }
 
 const MonthDetailView: React.FC<MonthDetailViewProps> = ({
-  monthKey,
+  monthKey: _monthKey,
   monthData,
   monthName,
   onBack
@@ -168,7 +168,7 @@ const MonthDetailView: React.FC<MonthDetailViewProps> = ({
                   {groupName}-Modelle
                 </h3>
                 <div className="space-y-2">
-                  {models.map((model, index) => (
+                  {models.map((model, _index) => (
                     <div key={model.model} className="flex justify-between items-center">
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-swmpi-accent rounded-full"></div>

@@ -1,7 +1,6 @@
 import React from 'react';
-import { ArrowLeft, TrendingUp, BarChart3, Users, Target, Award, UserCheck, Activity } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Users, Target, Award, UserCheck, Activity } from 'lucide-react';
 import { UserVisitsPeriod } from '../types';
-import UserVisitsChart from './UserVisitsChart';
 
 interface ComparisonData {
   key: string;
@@ -34,7 +33,6 @@ const UserVisitsComparisonView: React.FC<UserVisitsComparisonViewProps> = ({ com
   // Calculate growth and changes
   let firstPeriod: ComparisonData | null = null;
   let lastPeriod: ComparisonData | null = null;
-  let overallGrowth = 0;
 
   if (comparisonData.length >= 2) {
     const sortedByDate = [...comparisonData].sort((a, b) => {
@@ -44,8 +42,6 @@ const UserVisitsComparisonView: React.FC<UserVisitsComparisonViewProps> = ({ com
 
     firstPeriod = sortedByDate[0];
     lastPeriod = sortedByDate[sortedByDate.length - 1];
-    overallGrowth = lastPeriod && firstPeriod ?
-      ((lastPeriod.data.totalVisits - firstPeriod.data.totalVisits) / firstPeriod.data.totalVisits * 100) : 0;
   }
 
   // Calculate user retention

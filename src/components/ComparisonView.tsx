@@ -2,7 +2,6 @@ import React from 'react';
 import { ArrowLeft, TrendingUp, BarChart3, Zap, Users, Target, Award, Search, Database } from 'lucide-react';
 import { MonthlyComparison } from '../types';
 import UsageChart from './UsageChart';
-import ModelDistributionChart from './ModelDistributionChart';
 
 interface ComparisonData {
   key: string;
@@ -66,7 +65,6 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ comparisonData, onBack 
 
   // Calculate search mode averages
   const avgInternetSearch = comparisonData.reduce((sum, item) => sum + getMonthStats(item.data).searchModes.internet, 0) / comparisonData.length;
-  const avgDatabaseSearch = comparisonData.reduce((sum, item) => sum + getMonthStats(item.data).searchModes.database, 0) / comparisonData.length;
   const avgWithDatabase = comparisonData.reduce((sum, item) => {
     const stats = getMonthStats(item.data);
     return sum + (stats.databaseUsage.hasData ? stats.databaseUsage.withDatabase : 0);
@@ -81,18 +79,6 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ comparisonData, onBack 
     current.data.averageDailyUsage < worst.data.averageDailyUsage ? current : worst
   );
 
-  // Growth analysis
-  if (comparisonData.length >= 2) {
-    const sortedByDate = [...comparisonData].sort((a, b) => {
-      const monthOrder = ['Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November'];
-      return monthOrder.indexOf(a.name.split(' ')[0]) - monthOrder.indexOf(b.name.split(' ')[0]);
-    });
-
-    const firstMonth = sortedByDate[0];
-    const lastMonth = sortedByDate[sortedByDate.length - 1];
-    const overallGrowth = lastMonth && firstMonth ?
-      ((lastMonth.data.averageDailyUsage - firstMonth.data.averageDailyUsage) / firstMonth.data.averageDailyUsage * 100) : 0;
-  }
 
   return (
     <div className="min-h-screen p-8">

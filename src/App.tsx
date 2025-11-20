@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { TrendingUp, BarChart3, Calendar, Zap, Database, Search, Users, Eye } from 'lucide-react';
 import { DataProcessor } from './utils/dataProcessor';
 import { VisitsProcessor } from './utils/visitsProcessor';
-import { MonthlyComparison, MonthlyData, UserVisitsData, UserVisitsPeriod } from './types';
+import { MonthlyData, UserVisitsData } from './types';
 import ComparisonTable from './components/ComparisonTable';
 import UsageChart from './components/UsageChart';
 import ModelDistributionChart from './components/ModelDistributionChart';

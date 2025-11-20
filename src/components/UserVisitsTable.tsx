@@ -40,10 +40,10 @@ const UserVisitsTable: React.FC<UserVisitsTableProps> = ({ visitsData }) => {
               </td>
             ))}
             <td className="text-center">
-              <span className={`font-mono ${sortedPeriods[sortedPeriods.length - 1]?.totalUsers > sortedPeriods[0]?.totalUsers ? 'text-green-400' : 'text-red-400'}`}>
+              <span className={`font-mono ${sortedPeriods[sortedPeriods.length - 1] && sortedPeriods[0] && sortedPeriods[sortedPeriods.length - 1]!.totalUsers > sortedPeriods[0]!.totalUsers ? 'text-green-400' : 'text-red-400'}`}>
                 {sortedPeriods[0] && sortedPeriods[sortedPeriods.length - 1] ?
-                  `${sortedPeriods[sortedPeriods.length - 1].totalUsers > sortedPeriods[0].totalUsers ? '+' : ''}
-                   ${calculateGrowth(sortedPeriods[sortedPeriods.length - 1].totalUsers, sortedPeriods[0].totalUsers).toFixed(1)}%`
+                  `${sortedPeriods[sortedPeriods.length - 1]!.totalUsers > sortedPeriods[0]!.totalUsers ? '+' : ''}
+                   ${calculateGrowth(sortedPeriods[sortedPeriods.length - 1]!.totalUsers, sortedPeriods[0]!.totalUsers).toFixed(1)}%`
                   : 'N/A'
                 }
               </span>
@@ -59,10 +59,10 @@ const UserVisitsTable: React.FC<UserVisitsTableProps> = ({ visitsData }) => {
               </td>
             ))}
             <td className="text-center">
-              <span className={`font-mono ${sortedPeriods[sortedPeriods.length - 1]?.totalVisits > sortedPeriods[0]?.totalVisits ? 'text-green-400' : 'text-red-400'}`}>
+              <span className={`font-mono ${sortedPeriods[sortedPeriods.length - 1] && sortedPeriods[0] && sortedPeriods[sortedPeriods.length - 1]!.totalVisits > sortedPeriods[0]!.totalVisits ? 'text-green-400' : 'text-red-400'}`}>
                 {sortedPeriods[0] && sortedPeriods[sortedPeriods.length - 1] ?
-                  `${sortedPeriods[sortedPeriods.length - 1].totalVisits > sortedPeriods[0].totalVisits ? '+' : ''}
-                   ${calculateGrowth(sortedPeriods[sortedPeriods.length - 1].totalVisits, sortedPeriods[0].totalVisits).toFixed(1)}%`
+                  `${sortedPeriods[sortedPeriods.length - 1]!.totalVisits > sortedPeriods[0]!.totalVisits ? '+' : ''}
+                   ${calculateGrowth(sortedPeriods[sortedPeriods.length - 1]!.totalVisits, sortedPeriods[0]!.totalVisits).toFixed(1)}%`
                   : 'N/A'
                 }
               </span>
@@ -78,10 +78,10 @@ const UserVisitsTable: React.FC<UserVisitsTableProps> = ({ visitsData }) => {
               </td>
             ))}
             <td className="text-center">
-              <span className={`font-mono ${sortedPeriods[sortedPeriods.length - 1]?.averageVisitsPerUser > sortedPeriods[0]?.averageVisitsPerUser ? 'text-green-400' : 'text-red-400'}`}>
+              <span className={`font-mono ${sortedPeriods[sortedPeriods.length - 1] && sortedPeriods[0] && sortedPeriods[sortedPeriods.length - 1]!.averageVisitsPerUser > sortedPeriods[0]!.averageVisitsPerUser ? 'text-green-400' : 'text-red-400'}`}>
                 {sortedPeriods[0] && sortedPeriods[sortedPeriods.length - 1] ?
-                  `${sortedPeriods[sortedPeriods.length - 1].averageVisitsPerUser > sortedPeriods[0].averageVisitsPerUser ? '+' : ''}
-                   ${calculateGrowth(sortedPeriods[sortedPeriods.length - 1].averageVisitsPerUser, sortedPeriods[0].averageVisitsPerUser).toFixed(1)}%`
+                  `${sortedPeriods[sortedPeriods.length - 1]!.averageVisitsPerUser > sortedPeriods[0]!.averageVisitsPerUser ? '+' : ''}
+                   ${calculateGrowth(sortedPeriods[sortedPeriods.length - 1]!.averageVisitsPerUser, sortedPeriods[0]!.averageVisitsPerUser).toFixed(1)}%`
                   : 'N/A'
                 }
               </span>
@@ -108,9 +108,9 @@ const UserVisitsTable: React.FC<UserVisitsTableProps> = ({ visitsData }) => {
             <td className="font-medium text-swmpi-text">Benutzer-Retention</td>
             {sortedPeriods.map((period, index) => {
               let retention = 'N/A';
-              if (index > 0 && sortedPeriods[index - 1]) {
-                const prevUsers = new Set(sortedPeriods[index - 1].userVisits.map(u => u.email));
-                const currentUsers = new Set(period.userVisits.map(u => u.email));
+              if (index > 0 && sortedPeriods[index - 1] && period) {
+                const prevUsers = new Set(sortedPeriods[index - 1]!.userVisits.map(u => u.email));
+                const currentUsers = new Set(period!.userVisits.map(u => u.email));
                 const retained = Array.from(prevUsers).filter(email => currentUsers.has(email)).length;
                 retention = `${Math.round(retained / prevUsers.size * 100)}%`;
               }

@@ -15,7 +15,7 @@ interface MonthSelectorProps {
 const MonthSelector: React.FC<MonthSelectorProps> = ({
   monthlyData,
   monthNames,
-  selectedMonth,
+  selectedMonth: _selectedMonth,
   comparisonMonths,
   onMonthClick,
   onComparisonToggle,
