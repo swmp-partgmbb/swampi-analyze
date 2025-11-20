@@ -382,11 +382,11 @@ function App() {
           {/* Header */}
           <header className="text-center space-y-4 animate-fade-in">
             <div className="flex items-center justify-center mb-4">
-              <img
+              {/* <img
                 src={`${import.meta.env.BASE_URL}logo.svg`}
                 alt="SWAMPI Logo"
                 className="w-24 h-24 mr-4 opacity-90"
-              />
+              /> */}
               <h1 className="text-5xl font-display text-swmpi-text">
                 Benutzer-Besuche
               </h1>
@@ -554,11 +554,11 @@ function App() {
         {/* Header */}
         <header className="text-center space-y-4 animate-fade-in">
           <div className="flex items-center justify-center mb-4">
-            <img
+            {/* <img
               src="/logo.svg"
               alt="SWAMPI Logo"
               className="w-24 h-24 mr-4 opacity-90"
-            />
+            /> */}
             <h1 className="text-5xl font-display text-swmpi-text">
               Chat-Nutzungsanalyse
             </h1>
