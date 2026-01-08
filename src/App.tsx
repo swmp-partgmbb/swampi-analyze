@@ -36,7 +36,8 @@ function App() {
     'august': 'August 2025',
     'september': 'September 2025',
     'october': 'Oktober 2025',
-    'november': 'November 2025'
+    'november': 'November 2025',
+    'december': "Dezember 2025"
   };
 
   const handleMonthClick = (monthKey: string) => {
@@ -95,7 +96,7 @@ function App() {
     const loadData = async () => {
       try {
         // Load all 7 CSV files simultaneously
-        const months = ['may', 'june', 'july', 'august', 'september', 'october', 'november'];
+        const months = ['may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
         const responses = await Promise.all(
           months.map(month => fetch(`${import.meta.env.BASE_URL}${month}.csv`))
         );
@@ -235,11 +236,11 @@ function App() {
     );
   }
 
-  // Calculate overall growth rate (November vs May)
+  // Calculate overall growth rate (december vs May)
   const mayData = monthlyData.may;
-  const novemberData = monthlyData.november;
-  const overallGrowthRate = mayData && novemberData ?
-    ((novemberData.averageDailyUsage - mayData.averageDailyUsage) / mayData.averageDailyUsage * 100) : 0;
+  const decemberData = monthlyData.december;
+  const overallGrowthRate = mayData && decemberData ?
+    ((decemberData.averageDailyUsage - mayData.averageDailyUsage) / mayData.averageDailyUsage * 100) : 0;
 
   // Aggregate model usage across all months
   const aggregateTopModels = () => {
@@ -564,7 +565,7 @@ function App() {
             </h1>
           </div>
           <p className="text-xl text-swmpi-text-muted font-body max-w-2xl mx-auto">
-            Vergleich der durchschnittlichen täglichen Nutzung von Mai bis November 2025
+            Vergleich der durchschnittlichen täglichen Nutzung von Mai bis Dezember 2025
           </p>
         </header>
 
@@ -586,7 +587,7 @@ function App() {
             <h3 className={`text-2xl font-display font-bold text-swmpi-text mb-2 transition-all duration-300 ${overallGrowthRate > 0 ? 'group-hover:scale-110' : ''}`}>
               {overallGrowthRate > 0 ? '+' : ''}{overallGrowthRate.toFixed(1)}%
             </h3>
-            <p className="text-swmpi-text-muted">Wachstum Mai → November</p>
+            <p className="text-swmpi-text-muted">Wachstum Mai → Dezember</p>
           </div>
 
           <div className="swmpi-card p-6 text-center group">

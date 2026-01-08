@@ -16,7 +16,8 @@ const UsageChart: React.FC<UsageChartProps> = ({ data, viewMode = 'overview' }) 
     'August 2025': '#ef4444',
     'September 2025': '#8b5cf6',
     'Oktober 2025': '#ec4899',
-    'November 2025': '#64748b'
+    'November 2025': '#64748b',
+    'Dezember 2025': '#aa5b00ff'
   };
 
   // For month detail view - show daily data for single month
@@ -158,7 +159,7 @@ const UsageChart: React.FC<UsageChartProps> = ({ data, viewMode = 'overview' }) 
   }
 
   // For overview - show monthly averages (default behavior)
-  const monthOrder = ['Mai 2025', 'Juni 2025', 'Juli 2025', 'August 2025', 'September 2025', 'Oktober 2025', 'November 2025'];
+  const monthOrder = ['Mai 2025', 'Juni 2025', 'Juli 2025', 'August 2025', 'September 2025', 'Oktober 2025', 'November 2025', 'Dezember 2025'];
   const sortedData = monthOrder.map(monthName =>
     data.find(month => month.month === monthName)
   ).filter(Boolean);
@@ -217,7 +218,7 @@ const UsageChart: React.FC<UsageChartProps> = ({ data, viewMode = 'overview' }) 
               {sortedData[sortedData.length - 1]!.averageDailyUsage > sortedData[0]!.averageDailyUsage ? '↗' : '↘'}
               {' '}
               {Math.abs(((sortedData[sortedData.length - 1]!.averageDailyUsage - sortedData[0]!.averageDailyUsage) / sortedData[0]!.averageDailyUsage * 100)).toFixed(1)}%
-              Wachstum (Mai → November)
+              Wachstum (Mai → Dezember)
             </>
           ) : 'Keine Daten verfügbar'}
         </div>

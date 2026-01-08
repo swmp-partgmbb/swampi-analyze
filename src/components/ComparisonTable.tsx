@@ -7,7 +7,7 @@ interface ComparisonTableProps {
 
 const ComparisonTable: React.FC<ComparisonTableProps> = ({ monthlyData }) => {
   const months = Object.values(monthlyData);
-  const monthOrder = ['Mai 2025', 'Juni 2025', 'Juli 2025', 'August 2025', 'September 2025', 'Oktober 2025', 'November 2025'];
+  const monthOrder = ['Mai 2025', 'Juni 2025', 'Juli 2025', 'August 2025', 'September 2025', 'Oktober 2025', 'November 2025', 'Dezember 2025'];
   const sortedMonths = monthOrder.map(monthName =>
     months.find(month => month.month === monthName)
   ).filter(Boolean);
@@ -194,9 +194,9 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ monthlyData }) => {
             </td>
           </tr>
 
-          {/* Top Models - Show for November only */}
+          {/* Top Models - Show for Dezember only */}
           <tr>
-            <td className="font-medium text-swmpi-text">Top-Modelle (November)</td>
+            <td className="font-medium text-swmpi-text">Top-Modelle (Dezember)</td>
             <td colSpan={6} className="text-sm text-swmpi-text-muted">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                 {sortedMonths[sortedMonths.length - 1]?.topModels.slice(0, 3).map((model, index) => (
