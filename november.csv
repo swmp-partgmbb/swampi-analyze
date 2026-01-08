@@ -1,4 +1,4 @@
-﻿"TimeGenerated [UTC]",ResultDescription
+﻿"time",resultDescription
 "11/24/2025, 7:47:09.784 AM","2025-11-24 07:47:09,784 - INFO - src.routes.routes - Model: gpt-5-mini | Use Database: False | Relevant Documents: 10 | Mode:  | Search Mode: "
 "11/24/2025, 8:43:23.028 AM","2025-11-24 08:43:23,028 - INFO - src.routes.routes - Model: sonar | Use Database: False | Relevant Documents: 10 | Mode:  | Search Mode: internet"
 "11/24/2025, 10:01:18.359 AM","2025-11-24 10:01:18,358 - INFO - src.routes.routes - Model: gpt-5-mini | Use Database: False | Relevant Documents: 10 | Mode:  | Search Mode: "
